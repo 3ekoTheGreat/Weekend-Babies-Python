@@ -1,0 +1,29 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+%matplotlib inline
+
+
+df = pd.read_csv('Downloads/Births2015.csv')
+df.drop(["Unnamed: 0"],axis=1,inplace=True)
+df_test= df[['births','wday']]
+df_grp=df_test.groupby(['wday'],as_index=False).mean()
+df_grp
+
+df = pd.read_csv('Downloads/Births.csv')
+df.drop(["Unnamed: 0"],axis=1,inplace=True)
+df_test= df[['births','wday']]
+df_grp=df_test.groupby(['wday'],as_index=False).mean()
+df_grp
+
+x=df_grp['wday']
+x
+
+y=df_grp['births']
+y
+
+plt.bar(x,y, color='green',)
+plt.title('Births on days of the week from 1978-1999')
+plt.xlabel('day')
+plt.ylabel('births')
